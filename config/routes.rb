@@ -1,9 +1,8 @@
 Rails.application.routes.draw do
+  get '/', to: 'application#landing'
   resources :submissions
   resources :authors
-
-  #FOR REVIEWS, CREATE CUSTOM ROUTES
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-
-  get "/", to: "application_controller#landing"
+  # Reviews have custom routes
+  get '/submissions/:id', to: 'reviews#new'
+  post '/submissions/:id', to: 'reviews#create'
 end

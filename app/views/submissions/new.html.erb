@@ -1,0 +1,9 @@
+<h1>Create Submission</h1>
+
+<%= form_for @submission do |f| %>
+  <%= f.label :title, 'Title: '%>
+  <%= f.text_field :title %><br><br>
+  <%= f.label :content, 'Content: '%>
+  <%= f.text_area :content %><br><br>
+  <%= f.submit %>
+<% end %>

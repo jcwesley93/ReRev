@@ -1,9 +1,9 @@
 class SubmissionsController < ApplicationController
   before_action :get_submission, only: [:show, :edit, :update, :destroy]
 
-  def index
-    @submissions = Submission.all
-  end
+  # def index
+  #   @submissions = Submission.all
+  # end
 
   def show
   end

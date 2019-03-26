@@ -1,0 +1,15 @@
+<h1><%= @author.pen_name %></h1>
+
+<h1>Reviews</h1>
+<ul>
+  <% @author.reviews.each do |review| %>
+    <li><%= review.comment %></li>
+  <% end %>
+</ul>
+
+<h1>Submissions</h1>
+<ul>
+  <% @author.submissions.each do |submission| %>
+    <li><%= link_to submission.title, submission_path(submission) %></li>
+  <% end %>
+</ul>

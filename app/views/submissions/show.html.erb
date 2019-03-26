@@ -1,0 +1,21 @@
+<h1><%= @submission.title %></h1>
+
+<%= @submission.content %><br><br>
+
+<% if @submission.reviews.empty? %>
+  <%= "There are no reviews." %><br>
+<% else %>
+  <ul>
+  <% @submission.reviews.each do |review| %>
+    <li>
+      <%= "#{review.author.pen_name} said:" %><br>
+      <%= review.comment %>
+    </li>
+  <% end %>
+  </ul>
+<% end %>
+<br>
+
+<!-- insert review form -->
+
+<!-- should post newly created review on this page as well -->
