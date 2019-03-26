@@ -1,4 +1,4 @@
 class Submission < ApplicationRecord
   belongs_to :author
-  # belongs_to :prompt
+  has_many :reviews
 end
