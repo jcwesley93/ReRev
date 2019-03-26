@@ -1,6 +1,8 @@
 class ApplicationController < ActionController::Base
   helper_method :logged_in?, :current_author
 
+ 
+
   def authorized
     redirect_to login_path unless logged_in?
   end
@@ -21,6 +23,11 @@ class ApplicationController < ActionController::Base
     else
       false
     end
+  end 
+  
+
+  def landing
+    render "/layouts/landing.html.erb"
   end
 
 end

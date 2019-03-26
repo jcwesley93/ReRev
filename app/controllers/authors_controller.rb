@@ -11,7 +11,6 @@ class AuthorsController < ApplicationController
       # we have private and public show pages
       # if private, show the options to edit/delete reviews/submissions
       # if public, only display reviews/submissions
-
     end
 
     def new
