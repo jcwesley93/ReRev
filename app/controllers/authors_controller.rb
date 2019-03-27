@@ -25,6 +25,8 @@ class AuthorsController < ApplicationController
         if @author.valid? 
             session[:author_id] = @author.id
             redirect_to @author
+        else 
+          render :new
         end
     end
 

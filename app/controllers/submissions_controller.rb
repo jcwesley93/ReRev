@@ -16,7 +16,7 @@ class SubmissionsController < ApplicationController
   def create
     @submission = Submission.new(submission_params(:title, :content))
     @submission.author = current_author
-    if @submission.save
+    if @submission.valid? && @submission.save
       redirect_to submission_path(@submission)
     else
       render :new
@@ -34,7 +34,7 @@ class SubmissionsController < ApplicationController
   def update
     if @submission.author == current_author
       @submission.update(submission_params(:title, :content))
-      if @submission.save
+      if @submission.valid? && @submission.save
         redirect_to submission_path(@submission)
       else
         render :edit
