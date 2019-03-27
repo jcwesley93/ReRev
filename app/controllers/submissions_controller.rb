@@ -24,14 +24,21 @@ class SubmissionsController < ApplicationController
   end
 
   def edit
+    if @submission.author == current_author
+      render :edit
+    else
+      redirect_to submission_path(@submission)
+    end
   end
 
   def update
-    @submission.update(submission_params(:title, :content))
-    if @submission.save
-      redirect_to submission_path
-    else
-      render :edit
+    if @submission.author == current_author
+      @submission.update(submission_params(:title, :content))
+      if @submission.save
+        redirect_to submission_path(@submission)
+      else
+        render :edit
+      end
     end
   end
 
