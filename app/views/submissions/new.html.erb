@@ -1,5 +1,11 @@
 <h1>Create Submission</h1>
 
+<% if @submission.errors.any?%>
+<% @submission.errors.full_messages.each do |message| %>
+<%= message %>
+<% end %>
+<%end%>
+
 <%= form_for @submission do |f| %>
   <%= f.label :title, 'Title: '%>
   <%= f.text_field :title %><br><br>

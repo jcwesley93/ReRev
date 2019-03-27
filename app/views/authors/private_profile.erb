@@ -8,8 +8,12 @@
 </ul>
 
 <h1>Submissions</h1>
+<%= link_to "Create Submission", new_submission_path%>
 <ul>
   <% @author.submissions.each do |submission| %>
     <li><%= link_to submission.title, submission_path(submission) %></li>
   <% end %>
 </ul>
+
+<%= link_to "Update Account", edit_author_path%><br><br>
+<!-- delete options -->
