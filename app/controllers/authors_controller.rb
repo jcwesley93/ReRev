@@ -20,7 +20,6 @@ class AuthorsController < ApplicationController
     end
 
     def create
-        #include some validations
         @author = Author.create(author_params)
         if @author.valid? 
             session[:author_id] = @author.id
@@ -34,10 +33,14 @@ class AuthorsController < ApplicationController
     end
 
     def update
-        #include some validations
         @author.update(author_params)
-        redirect_to @author
+        if @author.valid?
+          redirect_to @author
+        else 
+          render :edit
     end
+  end
+  
 
     # def destroy
     #     @author.destroy
