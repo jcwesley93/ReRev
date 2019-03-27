@@ -20,6 +20,7 @@ class ApplicationController < ActionController::Base
   end 
   
   def landing
+    @submissions = Submission.all
     render "/layouts/landing.html.erb"
   end
 

@@ -2,9 +2,10 @@ class SubmissionsController < ApplicationController
   before_action :authorized
   before_action :get_submission, only: [:show, :edit, :update, :destroy]
 
-  # def index
-  #   @submissions = Submission.all
-  # end
+  def index
+    @submissions = Submission.all
+    redirect_to '/'
+  end
 
   def show
   end
