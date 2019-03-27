@@ -1,5 +1,15 @@
 <h1> New Account </h1>
 
+<% if @author.errors.any?%>
+<ul>
+<% @author.errors.full_messages.each do |message| %>
+<li>
+<%= message %>
+</li>
+<% end %>
+</ul>
+<%end%>
+
 <%= form_for @author do |f|%>
 <%= f.label :name %>
 <%= f.text_field :name%>

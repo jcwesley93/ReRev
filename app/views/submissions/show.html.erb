@@ -2,6 +2,22 @@
 
 <%= @submission.content %><br><br>
 
+<% if @review.errors.any?%>
+<ul>
+<% @review.errors.full_messages.each do |message| %>
+<li> <%= message %> </li>
+<% end %>
+</ul>
+<%end%>
+
+
+<%= form_for @review do |f| %>
+  <%= f.label :comment%>
+  <%= f.text_area :comment%>
+  <%= hidden_field_tag 'submission_id', "#{params[:id]}"%>
+  <%= f.submit %>
+  <%end%>
+
 <% if @submission.reviews.empty? %>
   <%= "There are no reviews." %><br>
 <% else %>

@@ -1,9 +1,11 @@
 <h1>Create Submission</h1>
 
 <% if @submission.errors.any?%>
+<ul>
 <% @submission.errors.full_messages.each do |message| %>
-<%= message %>
+<li> <%= message %> </li>
 <% end %>
+</ul>
 <%end%>
 
 <%= form_for @submission do |f| %>

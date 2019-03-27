@@ -1,6 +1,16 @@
 Welcome to our application
 <br>
+<%= link_to "Login", '/sessions/new'%>
+<br>
 <br>
 <%= link_to "Authors", '/authors' %> <br><br>
 
 <%= link_to "New Here? Create an account", new_author_path %>
+
+<ul>
+<%@submissions.each do |submission|%>
+<li>
+<%=link_to submission.title, submission_path(submission)%>
+</li>
+<%end%>
+</ul>

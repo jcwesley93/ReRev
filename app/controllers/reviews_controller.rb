@@ -5,11 +5,14 @@ class ReviewsController < ApplicationController
   end
 
   def create
-    @review = Review.create(review_params(:comment))
-    if @review.save
-      redirect_to submission_path
+    # byebug
+    @review = Review.new(review_params)
+    @review.author_id = current_author.id
+    @review.submission_id = params[:submission_id]
+    @review.save
+    redirect_to @review.submission
     end
-  end
+
 
   # def edit
   # end
@@ -33,8 +36,10 @@ class ReviewsController < ApplicationController
     @review = Review.find(params[:id])
   end
 
-  def review_params(*args)
-    params.require(:review).permit(*args)
+  def review_params
+    # params[:comment] = params[:review][:comment] 
+    # params[:author_id] = session[:id]
+    params.require(:review).permit(:comment)
   end
 
 end
