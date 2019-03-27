@@ -1,4 +1,5 @@
 class SubmissionsController < ApplicationController
+  before_action :authorized
   before_action :get_submission, only: [:show, :edit, :update, :destroy]
 
   # def index
@@ -13,23 +14,31 @@ class SubmissionsController < ApplicationController
   end
 
   def create
-    @submission = Submission.create(submission_params(:title, :content))
+    @submission = Submission.new(submission_params(:title, :content))
+    @submission.author = current_author
     if @submission.save
-      redirect_to submission_path
+      redirect_to submission_path(@submission)
     else
       render :new
     end
   end
 
   def edit
+    if @submission.author == current_author
+      render :edit
+    else
+      redirect_to submission_path(@submission)
+    end
   end
 
   def update
-    @submission.update(submission_params(:title, :content))
-    if @submission.save
-      redirect_to submission_path
-    else
-      render :edit
+    if @submission.author == current_author
+      @submission.update(submission_params(:title, :content))
+      if @submission.save
+        redirect_to submission_path(@submission)
+      else
+        render :edit
+      end
     end
   end
 
@@ -37,8 +46,7 @@ class SubmissionsController < ApplicationController
     @submission.destroy
   end
 
-  private
-
+  private 
   def get_submission
     @submission = Submission.find(params[:id])
   end

@@ -1,16 +1,18 @@
 class AuthorsController < ApplicationController
 
-    before_action :get_author, only: [:show, :edit, :update]
+    before_action :get_author, only: [:show, :edit, :update, :destroy]
 
     def index
       @authors = Author.all
     end
 
     def show
-      # conditional logic
-      # we have private and public show pages
-      # if private, show the options to edit/delete reviews/submissions
-      # if public, only display reviews/submissions
+      @author = Author.find(params[:id])
+      if @author != current_author
+        render 'public_profile'
+      else
+        render 'private_profile'
+      end
     end
 
     def new
@@ -20,7 +22,10 @@ class AuthorsController < ApplicationController
     def create
         #include some validations
         @author = Author.create(author_params)
-        redirect_to @author
+        if @author.valid? 
+            session[:author_id] = @author.id
+            redirect_to @author
+        end
     end
 
     def edit
@@ -32,10 +37,10 @@ class AuthorsController < ApplicationController
         redirect_to @author
     end
 
-    def destroy
-        @author.destroy
-        render "/" #this is the homepage
-    end
+    # def destroy
+    #     @author.destroy
+    #     redirect_to '/' #this is the homepage
+    # end
 
     private
 
