@@ -11,6 +11,7 @@
 
   <body>
     <% if logged_in? %>
+  
       <%= form_tag("/sessions", method: :delete) do %>
         <%= submit_tag "Logout" %>
       <% end %>
