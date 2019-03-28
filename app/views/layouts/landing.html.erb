@@ -1,6 +1,9 @@
 <h1> Welcome to our application </h1>
 <br>
-<%= link_to "Authors", '/authors' %> <br><br>
+<%= link_to "Authors", '/authors' %> <br><br> <!-- this should go in the navigation bar -->
+
+<h3> Today's Top Article </h3>
+<!-- include most reviewed submission -->
 
 <ul>
 <%@submissions.each do |submission|%>

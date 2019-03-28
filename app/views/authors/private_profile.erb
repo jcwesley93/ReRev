@@ -6,9 +6,9 @@
   <% @author.submissions.each do |submission| %>
     <li><%= link_to submission.title, submission_path(submission) %></li>
   <% end %>
+</ul>
 
-
-</ul><h1>Reviews</h1>
+<h1>Reviews</h1>
 <ul>
   <% @author.reviews.each do |review| %>
     <li><%="#{review.author.pen_name} said: #{review.comment}" %></li>
