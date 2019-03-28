@@ -1,0 +1,12 @@
+<h1> <%= @genre.name.upcase %></h1>
+<br> 
+<br>
+<div>
+<% @genre.submissions.each do |submission| %>
+<div>
+    <%= link_to submission.title, submission_path(submission) %>
+    <br> 
+    <%= link_to "Written by: #{submission.author.name}", author_path(submission.author) %>
+</div>
+<%end%>
+</div>

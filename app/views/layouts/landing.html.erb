@@ -1,11 +1,9 @@
-Welcome to our application
+<h1> Welcome to our application </h1>
 <br>
-<%= link_to "Login", '/sessions/new'%>
-<br>
-<br>
-<%= link_to "Authors", '/authors' %> <br><br>
+<%= link_to "Authors", '/authors' %> <br><br> <!-- this should go in the navigation bar -->
 
-<%= link_to "New Here? Create an account", new_author_path %>
+<h3> Today's Top Article </h3>
+<!-- include most reviewed submission -->
 
 <ul>
 <%@submissions.each do |submission|%>
