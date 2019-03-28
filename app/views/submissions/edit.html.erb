@@ -1,20 +1,3 @@
-<h1> Edit Submission </h1>
-<% if @submission.errors.any?%>
-  <ul>
-    <% @submission.errors.full_messages.each do |message| %>
-      <li> <%= message %> </li>
-    <% end %>
-  </ul>
-<% end %>
+<h1>Edit Submission</h1>
 
-<%= form_for @submission do |f| %>
-  <%= f.label :title, 'Title: '%>
-  <%= f.text_field :title %><br><br>
-  <%= f.label :content, 'Content: '%>
-  <%= f.text_area :content %><br><br>
-  <%= f.submit %>
-<% end %>
- 
- <%= render "form"%>
-
- 
+<%= render "form" %>
