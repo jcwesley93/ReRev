@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :genres
   get '/', to: 'application#landing'
   resources :submissions
   resources :authors

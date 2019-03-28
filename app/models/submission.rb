@@ -1,5 +1,6 @@
 class Submission < ApplicationRecord
   belongs_to :author
+  belongs_to :genre
   has_many :reviews
   validates :title, :content, presence: true
   validates :title, length: {maximum: 150}

@@ -24,7 +24,7 @@
   <ul>
   <% @submission.reviews.each do |review| %>
     <li>
-      <%= "#{review.author.pen_name} said:" %><br>
+      <%= link_to "#{review.author.pen_name} said:", review.author %><br>
       <%= review.comment %>
     </li>
   <% end %>
