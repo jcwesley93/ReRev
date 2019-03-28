@@ -13,8 +13,9 @@
         <li>
         <%= link_to submission.title, submission_path(submission) %>
         <br>
-        <%= submission.content.first(100)%>
+        <%= "#{submission.content.first(100)}..."%>
         </li>
+        <br>
       <% end %>
     <% end %>
   </ul>
