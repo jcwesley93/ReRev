@@ -2,15 +2,14 @@ class Genre < ApplicationRecord
     has_many :submissions
 
     def self.most_submitted 
-    most_submitted = 0 
-    most_submitted_name = ""
+    most_submitted = nil
+    most_submitted_count = 0
     self.all.each do |genre|
-        if genre.submissions.count > 0 && genre.submissions.count > most_submitted
-            most_submitted = genre.submissions.count
-            most_submitted_name = genre.name
+        if genre.submissions.count > 0 && genre.submissions.count > most_submitted_count
+            most_submitted = genre
         end
     end
-    most_submitted_name
+    most_submitted
     end
 
     def submission_count
