@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  
+
   get '/', to: 'application#landing'
   resources :submissions
   resources :authors
