@@ -29,8 +29,8 @@
 <% if !logged_in? %>
   <%= "Sign up or login to review this submission." %><br><br>
 <% elsif current_author == @submission.author %>
-  <%= "You cannot review your own submission." %>
-<% elsif current_author != @submission.author %> 
+  <%= "You cannot review your own submission." %><br><br>
+<% elsif current_author != @submission.author %>
   Leave a review!<br><br>
   <%= form_for @review do |f| %>
     <%= f.text_area :comment %>
