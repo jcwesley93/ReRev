@@ -16,7 +16,7 @@ class SubmissionsController < ApplicationController
   end
 
   def create
-    @submission = Submission.new(submission_params(:title, :content))
+    @submission = Submission.new(submission_params(:title, :content, :genre_id))
     @submission.author = current_author
     if @submission.valid? && @submission.save
       redirect_to submission_path(@submission)
