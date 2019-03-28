@@ -6,6 +6,7 @@ class Genre < ApplicationRecord
     most_submitted_count = 0
     self.all.each do |genre|
         if genre.submissions.count > 0 && genre.submissions.count > most_submitted_count
+            most_submitted_count = genre.submissions.count
             most_submitted = genre
         end
     end
