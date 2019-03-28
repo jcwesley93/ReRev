@@ -10,7 +10,7 @@
   </head>
 
   <body>
-    <%= link_to "Home", "/" %>  |  <%= link_to "Authors", authors_path %><br><br>
+    <%= link_to "Home", "/" %>  |  <%= link_to "Authors", authors_path %>  |  <%= link_to "Genres", genres_path %><br><br>
     <% if logged_in? %>
       <%= form_tag("/sessions", method: :delete) do %>
         <%= submit_tag "Logout" %>  <%= "Hello, #{current_author.pen_name}!" %>

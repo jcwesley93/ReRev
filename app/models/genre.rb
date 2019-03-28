@@ -13,5 +13,7 @@ class Genre < ApplicationRecord
     most_submitted_name
     end
 
-
+    def submission_count
+        self.submissions.count
+    end
 end

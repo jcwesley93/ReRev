@@ -2,7 +2,7 @@
 
 <% @genres.each do |genre| %>
 <div>
-    <%= link_to genre.name, genre_path(genre)%>
+    <%= link_to genre.name, genre_path(genre)%>, <%= pluralize(genre.submission_count, "submission") %>
 </div>
 
 <%end %>

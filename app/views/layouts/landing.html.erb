@@ -3,15 +3,14 @@
 Short for rereview, this platform allows authors to review each others' work.
 <br>
 
-<h3> Today's Top Article </h3>
-<%= Submission.most_reviewed%>
+<h3>Today's Top Submission</h3>
 
 <h2>Submissions</h2>
 
 <ul>
-<%@submissions.each do |submission|%>
-<li>
-<%=link_to submission.title, submission_path(submission)%>
-</li>
-<%end%>
+    <%@submissions.each do |submission|%>
+        <li>
+            <%= link_to submission.title, submission_path(submission) %>, <%= pluralize(submission.review_count, "review") %>
+        </li>
+    <%end%>
 </ul>
