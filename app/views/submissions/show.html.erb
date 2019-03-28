@@ -1,32 +1,18 @@
 <h1><%= @submission.title %></h1>
+<h3> <%= @submission.author.pen_name %></h3>
 <h5><%= @submission.genre.name %></h5>
 
 <%= @submission.content %><br><br>
 
 <!-- reviews -->
-<% if @review.errors.any?%>
-<ul>
-<% @review.errors.full_messages.each do |message| %>
-<li> <%= message %> </li>
-<% end %>
+<% if @review.errors.any? %>
+  <ul>
+    <% @review.errors.full_messages.each do |message| %>
+      <li> <%= message %> </li>
+  </ul>
+    <% end %>
+<%end%>
 
-<br><br>
-<% if !logged_in? || current_author != @submission.author %>
-  <%= "Sign up or login to review this submission." %><br><br>
-<% else %>
-  Leave a review!<br><br>
-  <%= form_for @review do |f| %>
-    <%= f.text_area :comment %>
-    <%= hidden_field_tag 'submission_id', "#{params[:id]}" %><br><br>
-    <%= f.submit %>
-  <% end %>
-<% end %>
-<%= form_for @review do |f| %>
-  <%= f.label :comment%>
-  <%= f.text_area :comment%>
-  <%= hidden_field_tag 'submission_id', "#{params[:id]}"%>
-  <%= f.submit %>
-  <%end%>
 
 <% if @submission.reviews.empty? %>
   <%= "There are no reviews." %><br>
@@ -34,11 +20,21 @@
   <ul>
   <% @submission.reviews.each do |review| %>
     <li>
-      <%= link_to "#{review.author.pen_name} said:", review.author %><br>
-      <%= review.comment %>
+      <%= "#{review.author.pen_name} said: #{review.comment}" %><br>
     </li>
-  <% end %>
+    <% end %>
   </ul>
 <% end %>
-<br>
 
+<% if !logged_in? %>
+  <%= "Sign up or login to review this submission." %><br><br>
+<% elsif current_author == @submission.author %>
+  <%= "You cannot review your own submission." %>
+<% elsif current_author != @submission.author %> 
+  Leave a review!<br><br>
+  <%= form_for @review do |f| %>
+    <%= f.text_area :comment %>
+    <%= hidden_field_tag 'submission_id', "#{params[:id]}" %><br><br>
+    <%= f.submit %>
+  <% end %>
+<% end %>
