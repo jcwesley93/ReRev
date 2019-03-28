@@ -15,4 +15,6 @@ class Genre < ApplicationRecord
     def submission_count
         self.submissions.count
     end
+
+    
 end

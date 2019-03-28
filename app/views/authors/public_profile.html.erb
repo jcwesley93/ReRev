@@ -3,6 +3,23 @@
 <b>Name:</b> <%= @author.name %><br><br>
 <b>Location:</b> <%= @author.location %><br><br>
 
+<h1>Submissions</h1>
+<% if @author.submissions.empty? %>
+  <%= "#{@author.pen_name} has not made any submissions yet." %>
+<% else %>
+  <ul>
+    <% @author.submissions.each do |submission| %>
+      <% if !submission.nil? %>
+        <li>
+        <%= link_to submission.title, submission_path(submission) %>
+        <br>
+        <%= submission.content.first(100)%>
+        </li>
+      <% end %>
+    <% end %>
+  </ul>
+<% end %>
+
 <h1>Reviews</h1>
 <% if @author.reviews.empty? %>
   <%= "#{@author.pen_name} has not left any reviews yet." %>
@@ -18,15 +35,4 @@
   </ul>
 <% end %>
 
-<h1>Submissions</h1>
-<% if @author.submissions.empty? %>
-  <%= "#{@author.pen_name} has not made any submissions yet." %>
-<% else %>
-  <ul>
-    <% @author.submissions.each do |submission| %>
-      <% if !submission.nil? %>
-        <li><%= link_to submission.title, submission_path(submission) %></li>
-      <% end %>
-    <% end %>
-  </ul>
-<% end %>
+
