@@ -11,10 +11,13 @@
 
   <body>
     <% if logged_in? %>
-  
       <%= form_tag("/sessions", method: :delete) do %>
         <%= submit_tag "Logout" %>
       <% end %>
+      <% else %>
+      <br>
+    <%= link_to "Login", '/sessions/new'%>
+      <br>  
     <% end %>
     <%= yield %>
   </body>
