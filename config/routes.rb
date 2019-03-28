@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
+  
   get '/', to: 'application#landing'
   resources :submissions
   resources :authors
   resources :reviews, except: [:index]
+  resources :genres, only: [:index, :show]
   # Reviews have custom routes
   get '/submissions/:id', to: 'reviews#new'
   post '/submissions/:id', to: 'reviews#create'

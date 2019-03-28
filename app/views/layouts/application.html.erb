@@ -15,6 +15,11 @@
       <%= form_tag("/sessions", method: :delete) do %>
         <%= submit_tag "Logout" %>  <%= "Hello, #{current_author.pen_name}!" %>
       <% end %>
+      <% else %>
+      <br>
+    <%= link_to "Login", '/sessions/new'%>
+      <br>
+      <%= link_to "New Here? Create an account", new_author_path %>
     <% end %>
     <%= yield %>
   </body>
