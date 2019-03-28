@@ -9,4 +9,16 @@ class Author < ApplicationRecord
     # validates :password, length: { minimum: 7 }, on: :new
     validates :password, confirmation: true, on: :new
 
+    def self.top_contributor
+        top_contributor = nil 
+        top_contributor_count = 0 
+        self.all.each do |author|
+            if author.submissions.count > 0 && author.submissions.count > top_contributor_count
+                top_contributor = author
+                top_contributor_count = author.submissions.count
+            end
+        end
+        top_contributor
+    end
+
 end

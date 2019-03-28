@@ -1,8 +1,10 @@
 <h1> Genres </h1>
 
+<h3> Most Popular Genre: <%= link_to Genre.most_submitted.name, genre_path(Genre.most_submitted)%> </h3>
+
 <% @genres.each do |genre| %>
 <div>
-    <%= link_to genre.name, genre_path(genre)%>, <%= pluralize(genre.submission_count, "submission") %>
+    <%= link_to genre.name, genre_path(genre)%> <%= pluralize(genre.submission_count, "submission") %>
 </div>
 
 <%end %>
