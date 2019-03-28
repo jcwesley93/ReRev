@@ -1,12 +1,18 @@
-Welcome to our application
+<h1>Welcome to ReRev!</h1>
+
+Short for rereview, this platform allows authors to review each others' work.
+<br>
+<br>
+<%= link_to "New Here? Sign Up", new_author_path %>
+<br>
 <br>
 <%= link_to "Login", '/sessions/new'%>
 <br>
 <br>
-<%= link_to "Authors", '/authors' %> <br><br>
-
-<%= link_to "New Here? Create an account", new_author_path %>
-
+<%= link_to "Authors", '/authors' %>
+<br>
+<br>
+<h2>Submissions</h2>
 <ul>
 <%@submissions.each do |submission|%>
 <li>

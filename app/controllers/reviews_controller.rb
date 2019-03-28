@@ -5,7 +5,6 @@ class ReviewsController < ApplicationController
   end
 
   def create
-    # byebug
     @review = Review.new(review_params)
     @review.author_id = current_author.id
     @review.submission_id = params[:submission_id]
@@ -37,8 +36,6 @@ class ReviewsController < ApplicationController
   end
 
   def review_params
-    # params[:comment] = params[:review][:comment] 
-    # params[:author_id] = session[:id]
     params.require(:review).permit(:comment)
   end
 

@@ -1,11 +1,11 @@
 <h1> Edit Submission </h1>
 <% if @submission.errors.any?%>
-<ul>
-<% @submission.errors.full_messages.each do |message| %>
-<li> <%= message %> </li>
+  <ul>
+    <% @submission.errors.full_messages.each do |message| %>
+      <li> <%= message %> </li>
+    <% end %>
+  </ul>
 <% end %>
-</ul>
-<%end%>
 
 <%= form_for @submission do |f| %>
   <%= f.label :title, 'Title: '%>

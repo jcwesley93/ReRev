@@ -1,5 +1,5 @@
 class SubmissionsController < ApplicationController
-  before_action :authorized
+  before_action :authorized, except: [:index, :show]
   before_action :get_submission, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -18,7 +18,7 @@ class SubmissionsController < ApplicationController
   def create
     @submission = Submission.new(submission_params(:title, :content))
     @submission.author = current_author
-    if @submission.valid? && @submission.save
+    if @submission.save
       redirect_to submission_path(@submission)
     else
       render :new
@@ -36,8 +36,8 @@ class SubmissionsController < ApplicationController
   def update
     if @submission.author == current_author
       @submission.update(submission_params(:title, :content))
-      if @submission.valid? && @submission.save
-        redirect_to submission_path(@submission)
+      if @submission.save
+        redirect_to submission_path(@submission), alert: "The submission was updated."
       else
         render :edit
       end
@@ -45,10 +45,15 @@ class SubmissionsController < ApplicationController
   end
 
   def destroy
-    @submission.destroy
+    if @submission.author == current_author
+      @submission.destroy
+      flash[:notice] = 'Submission successfully deleted!'
+      redirect_to author_path(@submission.author)
+    end
   end
 
-  private 
+  private
+
   def get_submission
     @submission = Submission.find(params[:id])
   end

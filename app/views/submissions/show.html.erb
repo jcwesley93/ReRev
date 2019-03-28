@@ -2,21 +2,25 @@
 
 <%= @submission.content %><br><br>
 
-<% if @review.errors.any?%>
-<ul>
-<% @review.errors.full_messages.each do |message| %>
-<li> <%= message %> </li>
+<% if @review.errors.any? %>
+  <ul>
+    <% @review.errors.full_messages.each do |message| %>
+      <li> <%= message %> </li>
+    <% end %>
+  </ul>
 <% end %>
-</ul>
-<%end%>
 
-
-<%= form_for @review do |f| %>
-  <%= f.label :comment%>
-  <%= f.text_area :comment%>
-  <%= hidden_field_tag 'submission_id', "#{params[:id]}"%>
-  <%= f.submit %>
-  <%end%>
+<br><br>
+<% if !logged_in? || current_author != @submission.author %>
+  <%= "Sign up or login to review this submission." %><br><br>
+<% else %>
+  Leave a review!<br><br>
+  <%= form_for @review do |f| %>
+    <%= f.text_area :comment %>
+    <%= hidden_field_tag 'submission_id', "#{params[:id]}" %><br><br>
+    <%= f.submit %>
+  <% end %>
+<% end %>
 
 <% if @submission.reviews.empty? %>
   <%= "There are no reviews." %><br>
@@ -31,7 +35,3 @@
   </ul>
 <% end %>
 <br>
-
-<!-- insert review form -->
-
-<!-- should post newly created review on this page as well -->
