@@ -10,30 +10,17 @@ class ReviewsController < ApplicationController
     @review.submission_id = params[:submission_id]
     @review.save
     redirect_to @review.submission
+  end
+
+  def destroy
+    @review = Review.find(params[:id])
+    if @review.author == current_author
+      @review.destroy
+      redirect_to author_path(@review.author)
     end
-
-
-  # def edit
-  # end
-
-  # def update
-  #   @submission.update(submission_params(:title, :content))
-  #   if @submission.save
-  #     redirect_to submission_path
-  #   else
-  #     render :edit
-  #   end
-  # end
-  #
-  # def destroy
-  #   @submission.destroy
-  # end
+  end
 
   private
-
-  def get_review
-    @review = Review.find(params[:id])
-  end
 
   def review_params
     params.require(:review).permit(:comment)

@@ -35,7 +35,7 @@ class SubmissionsController < ApplicationController
 
   def update
     if @submission.author == current_author
-      @submission.update(submission_params(:title, :content))
+      @submission.update(submission_params(:title, :content, :genre_id))
       if @submission.save
         redirect_to submission_path(@submission), alert: "The submission was updated."
       else

@@ -13,6 +13,7 @@
     <% else %>
       <ul>
         <li><%= link_to review.comment, submission_path(review.submission) %></li>
+        <%= button_to "Delete Review", review, :method => :delete %><br><br>
       </ul>
     <% end %>
   <% end %>

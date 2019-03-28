@@ -4,6 +4,7 @@ Short for rereview, this platform allows authors to review each others' work.
 <br>
 
 <h3>Today's Top Submission</h3>
+<%= link_to Submission.most_reviewed_title, submission_path(Submission.find_by(title: Submission.most_reviewed_title)) %>
 
 <h2>Submissions</h2>
 
