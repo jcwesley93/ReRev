@@ -1,7 +1,10 @@
 <h1> <%= @genre.name.upcase %></h1>
 <br> 
 <br>
-<div>
+<div> 
+<% if @genre.submissions.empty?%>
+     There are no submissions! <%= link_to "Make one here.", new_submission_path%>
+<%else%>
 <% @genre.submissions.each do |submission| %>
 <div>
     <%= link_to submission.title, submission_path(submission) %>
@@ -10,5 +13,6 @@
     <br>
     <br>
 </div>
+<%end%>
 <%end%>
 </div>
