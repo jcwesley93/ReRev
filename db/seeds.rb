@@ -6,10 +6,10 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-# Author.destroy_all
-# Review.destroy_all
-# Submission.destroy_all
-# Genre.destroy_all
+Author.destroy_all
+Review.destroy_all
+Submission.destroy_all
+Genre.destroy_all
 
 ###AUTHORS 
 john = Author.create(name: "John Doe", email: "john@test.com", pen_name: "John Anon", location: "NYC", password: "password")
