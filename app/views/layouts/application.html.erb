@@ -20,12 +20,14 @@
   
     <div class="navigation_two">
     <% if logged_in? %>
+     <%= "Hello, #{current_author.pen_name}!" %>
+     <%= link_to "My Profile", author_path(current_author)%>
       <%= form_tag("/sessions", method: :delete) do %>
-       <%= submit_tag "Logout" %>  <%= "Hello, #{current_author.pen_name}!" %>
+       <%= submit_tag "Logout" %>  
       <% end %>
       <% else %>
       <br>
-    <%= link_to "Login", '/sessions/new'%>  |  <%= link_to "Sign Up", new_author_path %>
+    <%= link_to "Login", '/sessions/new', :class => 'button'%>   <%= link_to "Sign Up", new_author_path, :class => 'button' %>
     <% end %>
     </div>
 
