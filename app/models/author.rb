@@ -22,8 +22,8 @@ class Author < ApplicationRecord
         top_contributor
     end
 
-    def author_count
-        Author.all.count 
+    def self.author_count
+        self.all.count 
     end
 
     def varied_author

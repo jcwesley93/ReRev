@@ -25,7 +25,10 @@ class ApplicationController < ActionController::Base
   end
 
   def analytics
+    @submissions = Submission.submission_count
+    @total_reviews = Review.total_reviews
     @most_reviewed_submission = Submission.most_reviewed_title
+    @total_authors = Author.author_count
     @top_contributor = Author.top_contributor.pen_name
     @most_popular_genre = Genre.most_submitted.name
     render "/layouts/analytics.html.erb"

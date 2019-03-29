@@ -19,8 +19,4 @@ class Genre < ApplicationRecord
     end
 
 
-
-
-
-    
 end
