@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
-
   get '/', to: 'application#landing'
+  get '/analytics', to: 'application#analytics', as: "analytics"
   resources :submissions
   resources :authors
-  resources :reviews, except: [:index]
+  resources :reviews, only: [:new, :create, :destroy]
   resources :genres, only: [:index, :show]
   # Reviews have custom routes
   get '/submissions/:id', to: 'reviews#new'

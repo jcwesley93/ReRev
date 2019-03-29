@@ -17,11 +17,18 @@ class ApplicationController < ActionController::Base
     else
       false
     end
-  end 
-  
+  end
+
   def landing
     @submissions = Submission.all
     render "/layouts/landing.html.erb"
+  end
+
+  def analytics
+    @most_reviewed_submission = Submission.most_reviewed_title
+    @top_contributor = Author.top_contributor.pen_name
+    @most_popular_genre = Genre.most_submitted.name
+    render "/layouts/analytics.html.erb"
   end
 
 end
