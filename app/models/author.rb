@@ -2,6 +2,7 @@ class Author < ApplicationRecord
     has_secure_password
     has_many :reviews
     has_many :submissions
+    has_many :genres, through: :submissions
 
     validates :name, :email, :pen_name, :location, presence: true
     validates :email, :pen_name, uniqueness: true
@@ -20,5 +21,30 @@ class Author < ApplicationRecord
         end
         top_contributor
     end
+
+    def author_count
+        Author.all.count 
+    end
+
+    def varied_author
+        self.genres.uniq.count
+    end
+
+    def average_word_count
+        total_words= []
+        self.submissions.each do |submission|
+            total_words << (submission.content.split.count)
+        end
+        total_words.inject(0, :+) / self.submissions.count
+    end
+
+
+
+
+
+
+
+
+
 
 end

@@ -35,4 +35,18 @@ class Submission < ApplicationRecord
     most_reviewed_title
   end
 
+  def submission_count 
+    Submission.all.count
+  end
+
+  def total_word_count
+    self.content.split.count
+  end
+
+
+  
+
+
+
+
 end

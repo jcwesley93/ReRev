@@ -1,5 +1,6 @@
 class Genre < ApplicationRecord
     has_many :submissions
+    
 
     def self.most_submitted 
     most_submitted = nil
@@ -16,6 +17,10 @@ class Genre < ApplicationRecord
     def submission_count
         self.submissions.count
     end
+
+
+
+
 
     
 end
