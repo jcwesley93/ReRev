@@ -30,7 +30,18 @@ class Author < ApplicationRecord
         self.genres.uniq.count
     end
 
-    
+    def average_word_count
+        total_words= []
+        self.submissions.each do |submission|
+            total_words << (submission.content.split.count)
+        end
+        total_words.inject(0, :+) / self.submissions.count
+    end
+
+
+
+
+
 
 
 

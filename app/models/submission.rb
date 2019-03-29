@@ -39,6 +39,11 @@ class Submission < ApplicationRecord
     Submission.all.count
   end
 
+  def total_word_count
+    self.content.split.count
+  end
+
+
   
 
 

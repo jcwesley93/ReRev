@@ -1,6 +1,6 @@
 class Genre < ApplicationRecord
     has_many :submissions
-    has_many :authors, through: :submissions
+    
 
     def self.most_submitted 
     most_submitted = nil
