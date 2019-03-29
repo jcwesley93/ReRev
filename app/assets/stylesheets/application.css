@@ -13,5 +13,66 @@
  *= require_tree .
  *= require_self
 
- 
+
  */
+
+ h1{ 
+     font-family: 'Bitter', serif;
+ }
+
+/* Styling Links */
+/* .a{
+     color: white; 
+ }
+
+ .a:hover{
+    color: black; 
+}
+
+.a:visited{
+    color: white; 
+}
+
+.a:active{
+    color: blue;
+} */
+
+.button{
+    background-color: black; 
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-align: center; 
+    font-size: 16px;
+    opacity: 0.5;
+    transition: 0.3s;
+    display: inline-block;
+    text-decoration: none;
+    cursor: pointer;
+    border-radius: 12px;
+}
+
+.button:hover{
+    opacity: 1.0;
+}
+.navigation_one { 
+    margin: 2px;
+    float:left;
+    background-color: grey;
+    width: 100%;
+    color: white; 
+}
+
+.navigation_two { 
+    margin: 2px;
+    padding-bottom: 2px;
+    background-color: fuchsia;
+    width: 100%;
+    color: white;
+    text-align: right; 
+}
+
+.header{ 
+    text-align: center;
+}
+
