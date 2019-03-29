@@ -15,7 +15,9 @@
 
 
  */
-
+ @import "bulma";
+ 
+ 
  h1{ 
      font-family: 'Bitter', serif;
  }
@@ -37,7 +39,7 @@
     color: blue;
 } */
 
-.button{
+/* .button{
     background-color: black; 
     border: none;
     color: white;
@@ -50,11 +52,12 @@
     text-decoration: none;
     cursor: pointer;
     border-radius: 12px;
-}
+} */
 
-.button:hover{
+ /* .button:hover{
     opacity: 1.0;
-}
+} */
+
 .navigation_one { 
     margin: 2px;
     float:left;
@@ -74,5 +77,10 @@
 
 .header{ 
     text-align: center;
+}
+
+.control { */
+   /* float: right;  */
+   /* width: 85%;  */
 }
 

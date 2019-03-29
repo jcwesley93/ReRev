@@ -1,17 +1,24 @@
-<div class="header"><h1>Welcome to ReRev!</h1></div>
+<center>
+<div class="title is-1"><h1>Welcome to ReRev!</h1></div>
 
-Short for rereview, this platform allows authors to review each others' work.
+<p class="subtitle is-4">Short for rereview, this platform allows authors to review each others' work.</p>
+
+<p class="subtitle is-5">Today's Top Submission
 <br>
+<%= link_to Submission.most_reviewed_title, submission_path(Submission.find_by(title: Submission.most_reviewed_title)) %> </p>
+</center>
+<br>
+<br>
+<h2 class="subtitle is-4">Submissions</h2>
 
-<h3>Today's Top Submission</h3>
-<%= link_to Submission.most_reviewed_title, submission_path(Submission.find_by(title: Submission.most_reviewed_title)) %>
-
-<h2>Submissions</h2>
-
-<ul>
+<div class="columns is-multiline">
     <%@submissions.each do |submission|%>
-        <li>
-            <%= link_to submission.title, submission_path(submission) %>, <%= pluralize(submission.review_count, "review") %>
-        </li>
+        <div class="column is-one-quarter">
+            <div class="box" style="background-color:#B5B5B5">
+            <%= link_to submission.title, submission_path(submission), class:"title is-4" %>
+            <hr>
+            <%= pluralize(submission.review_count, "review") %>
+            </div>
+        </div>
     <%end%>
-</ul>
+</div>

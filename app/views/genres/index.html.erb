@@ -1,10 +1,15 @@
-<h1> Genres </h1>
+<center> <h1 class="title"> Genres </h1> </center>
 
-<h3> Most Popular Genre: <%= link_to Genre.most_submitted.name, genre_path(Genre.most_submitted)%> </h3>
-
+<center><h4 class="subtitle"> Most Popular Genre: <%= link_to Genre.most_submitted.name, genre_path(Genre.most_submitted)%></h3></center>
+<br>
+<div class="columns is-multiline is-centered">
 <% @genres.each do |genre| %>
-<div>
-    <%= link_to genre.name, genre_path(genre)%> <%= pluralize(genre.submission_count, "submission") %>
-</div>
-
+  <div class="column is-two-fifths">
+      <div class="box" style="background-color: #EBFFFC">
+        <%= link_to genre.name, genre_path(genre)%> 
+         <hr>
+         <%= pluralize(genre.submission_count, "submission") %>
+    </div>
+  </div>
 <%end %>
+</div>

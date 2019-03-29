@@ -1,21 +1,39 @@
-<% if @submission.errors.any?%>
-<ul>
-<% @submission.errors.full_messages.each do |message| %>
-<li> <%= message %> </li>
-<% end %>
-</ul>
-<%end%>
+<div class="columns is-centered">
+  <div class="column is-half">
+    <% if @submission.errors.any?%>
+    <ul>
+    <% @submission.errors.full_messages.each do |message| %>
+    <li> <%= message %> </li>
+    <% end %>
+    </ul>
+    <%end%>
+  </div>
+</div>
 
-<div class="form">
+<div class="columns is-centered">
+  <div class="column is-half">
   <%= form_for @submission do |f| %>
-    <%= f.label :title, 'Title: '%>
-    <%= f.text_field :title%><br><br>
-    <%= f.label :content, 'Content: '%>
-    <%= f.text_area :content, cols: "50", rows: "10"%> <br><br>
-    <%= f.label :genre_id, 'Genre:'%>
-    <%= f.collection_select :genre_id, Genre.all.order('name'), :id, :name %>
+  
+  <div class="field">
+     <%= f.label :title, 'Title: ', class:"label"%>
+        <%= f.text_field :title, class:"input"%><br><br>
+  </div>
+
+
+  <div class="field">
+    <%= f.label :content, 'Content: ', class:"label"%>
+        <%= f.text_area :content, class:"textarea", rows: 10%> <br><br>
+  </div>
+
+  <div class="field">
+    <%= f.label :genre_id, 'Genre:', class:"label"%>
+        <div class="select is-medium">
+          <%= f.collection_select :genre_id, Genre.all.order('name'), :id, :name, class:"select" %>
+        </div>
+    </div>
     <br>
     <br>
-    <%= f.submit %>
+    <%= f.submit "Submit", class: "button is-dark"%>
   <% end %>
+</div>
 </div>

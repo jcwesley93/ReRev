@@ -1,8 +1,15 @@
-<h1>All Authors</h1>
+<center> <h1 class="title">All Authors</h1> </center>
 
-<h4> Top Contributor: <%= link_to Author.top_contributor.pen_name, author_path(Author.top_contributor)%></h4>
-<ul>
+<center><h4 class="subtitle"> Top Contributor: <%= link_to Author.top_contributor.pen_name, author_path(Author.top_contributor)%></h4></center>
+<br>
+<div class="columns is-multiline is-centered">
   <% @authors.each do |author| %>
-    <li><%= link_to author.pen_name, author_path(author) %></li>
+    <div class="column is-two-fifths">
+      <div class="box" style="background-color: #f5f5f5">
+      <%= link_to author.pen_name, author_path(author) %>
+      <hr>
+      <%= pluralize(author.submissions.count, "submission")%>
+      </div>
+    </div>
   <% end %>
-</ul>
+</div>

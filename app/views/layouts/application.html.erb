@@ -1,39 +1,48 @@
 <!DOCTYPE html>
 <html>
   <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <title>ReRev</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.min.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Bitter" rel="stylesheet">
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
+  <!-- nav bar one -->
+  <nav class="navbar is-primary" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+   <%= link_to "Home", "/", :class => 'navbar-item' %>
+   <%= link_to "Authors", authors_path, :class => 'navbar-item' %>
+   <%= link_to "Genres", genres_path, :class => 'navbar-item' %>
+   <%= link_to "Analytics", analytics_path, :class => 'navbar-item' %><br><br>
+   </div>
+   </nav>  
 
-  <div class="navigation_one">
-   <%= link_to "Home", "/", :class => 'button' %> <%= link_to "Authors", authors_path, :class => 'button' %> <%= link_to "Genres", genres_path, :class => 'button' %> <%= link_to "Analytics", analytics_path, :class => 'button' %><br><br>
-    </div>
-    
-    <br>
-    <br>
-  
-    <div class="navigation_two">
+   <!-- nav bar two -->
+  <nav class="navbar is-light" role="navigation" aria-label="main navigation">
+  <div class="navbar-end">
+  <div class="navbar-brand">
     <% if logged_in? %>
-     <%= "Hello, #{current_author.pen_name}!" %>
-     <%= link_to "My Profile", author_path(current_author)%>
+     <p class="title is-4"><%= "Hello, #{current_author.pen_name}!"%></p>
+     <%= link_to "My Profile", author_path(current_author), class:"navbar-item is-right"%>
       <%= form_tag("/sessions", method: :delete) do %>
-       <%= submit_tag "Logout" %>  
+       <%= submit_tag "Logout", class:"button is-white is-medium" %>  
       <% end %>
       <% else %>
       <br>
-    <%= link_to "Login", '/sessions/new', :class => 'button'%>   <%= link_to "Sign Up", new_author_path, :class => 'button' %>
+    <%= link_to "Login", '/sessions/new', class:"navbar-item"%>   <%= link_to "Sign Up", new_author_path, class:"navbar-item"%>
     <% end %>
     </div>
-
-    <br>
-    <br>
+    </div>
+    </div>
+    </nav>
 
     <%= yield %>
   </body>
